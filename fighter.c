@@ -21,7 +21,7 @@ void init_fighters(void) {
     srand(time(NULL));
 
     struct { char name[16]; int hp; int atk; int def; int pri; int is_player; } data[] = {
-        {"[YOU] Hero",   120, 18, 5, 3, 1},
+        {"[YOU] Justin",   120, 18, 5, 3, 1},
         {"Golem",        150, 12, 8, 2, 0},
         {"Rogue",         90, 22, 3, 3, 0},
         {"Warlord",      110, 16, 6, 2, 0},
@@ -104,15 +104,15 @@ void player_take_turn(int idx) {
         if (target != -1) apply_damage(idx, target);
     } else if (c == 'd' || c == 'D') {
         fighters[idx].defense += 3;
-        push_log("  >> Hero braces! +3 defense this round.");
+        push_log("  >> Justin braces! +3 defense this round.");
     } else if (c == 'b' || c == 'B') {
         if (fighters[idx].priority < 5) {
             fighters[idx].priority++;
-            push_log("  >> Hero focuses! Priority boosted.");
+            push_log("  >> Justin focuses! Priority boosted.");
         } else {
             push_log("  >> Priority already maxed!");
         }
     } else {
-        push_log("  >> Hero hesitates... (no input)");
+        push_log("  >> Justin hesitates... (no input)");
     }
 }

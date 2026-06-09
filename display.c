@@ -80,7 +80,7 @@ void display_victory(void) {
     for (int i = 0; i < MAX_FIGHTERS; i++) {
         if (fighters[i].state != DEFEATED) {
             if (fighters[i].is_player)
-                printf(GREEN "  🏆 YOU WIN! Hero stands victorious!\n" RESET);
+                printf(GREEN "  🏆 YOU WIN! Justin stands victorious!\n" RESET);
             else
                 printf(RED "  💀 YOU LOST! %s wins the arena!\n" RESET, fighters[i].name);
         }

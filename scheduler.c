@@ -13,7 +13,7 @@ void sigusr1_handler(int sig) {
     for (int i = 0; i < MAX_FIGHTERS; i++) {
         if (fighters[i].is_player && fighters[i].state != DEFEATED) {
             if (fighters[i].priority < 5) fighters[i].priority++;
-            push_log("  [SIGNAL] SIGUSR1: Hero priority boosted!");
+            push_log("  [SIGNAL] SIGUSR1: Justin priority boosted!");
         }
     }
 }
