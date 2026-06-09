@@ -28,18 +28,18 @@ static void hp_bar(int hp, int max_hp) {
 }
 
 void display_arena(int active_idx) {
-    printf("\033[H");   // cursor home (no flicker)
+    printf("\033[2J\033[H");   // clear screen and cursor home
     printf(BOLD CYAN
         "╔══════════════════════════════════════════════════════════╗\n"
-        "║            ⚔  PROCESS  BATTLE  ARENA  ⚔                 ║\n"
+        "║                 JUSTIN  BATTLE  ARENA                    ║\n"
         "║      Scheduler: Weighted Round-Robin | SIGALRM ticks     ║\n"
         "╚══════════════════════════════════════════════════════════╝\n"
         RESET);
 
-    printf(BOLD "  %-14s %4s %5s %6s %5s  %-22s  %s\n" RESET,
+    printf(BOLD "  %-14s %-4s %-4s %-4s %-4s  %-22s  %s\n" RESET,
            "Fighter", "PRI", "ATK", "DEF", "HP", "Health Bar", "Status");
-    printf("  %-14s %4s %5s %6s %5s  %-22s  %s\n",
-           "──────────────","────","─────","──────","─────",
+    printf("  %-14s %-4s %-4s %-4s %-4s  %-22s  %s\n",
+           "──────────────","────","────","────","────",
            "──────────────────────","──────────");
 
     for (int i = 0; i < MAX_FIGHTERS; i++) {
@@ -52,7 +52,7 @@ void display_arena(int active_idx) {
         else if (f->state == READY)           status = "  READY";
         else                                  status = "  READY";
 
-        printf("  %s%-14s%s %4d %5d %6d %5d  ",
+        printf("  %s%-14s%s %-4d %-4d %-4d %-4d  ",
                color, f->name, RESET,
                f->priority, f->attack, f->defense, f->hp);
         if (f->state == DEFEATED)
@@ -63,12 +63,12 @@ void display_arena(int active_idx) {
     }
 
     // Battle log
-    printf(BOLD "\n  ── Battle Log ──────────────────────────────────────\n" RESET);
+    printf(BOLD "\n  ────────────────────────────────────── Battle Log ──────────────────────────────────────\n" RESET);
     for (int i = 0; i < MAX_LOG; i++) {
         if (battle_log[i][0])
             printf("  %s\n", battle_log[i]);
     }
-
+    printf(BOLD "\n  ────────────────────────────────────────────────────────────────────────────────────────\n" RESET);
     printf(BOLD "\n  Signals: " RESET
            "kill -USR1 %d " CYAN "(boost you)" RESET
            "  |  kill -USR2 %d " RED "(throttle enemy)" RESET "\n",
