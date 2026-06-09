@@ -6,7 +6,7 @@ A time-sharing system simulation built in C, where fighters compete for CPU time
 
 ## Description
 
-Process Battle Arena simulates how an operating system shares CPU time between multiple processes. Each fighter represents a process in a process table. A weighted round-robin scheduler, driven by `SIGALRM` and `setitimer()`, gives each fighter a time slice to act. Higher priority fighters get more slices — just like real OS scheduling.
+Process Battle Arena simulates how an operating system shares CPU time between multiple processes. Each fighter represents a process in a process table. A weighted round-robin scheduler, driven by `SIGALRM` and `setitimer()`, gives each fighter a time slice to act. Higher priority fighters get more slices, just like real OS scheduling.
 
 The player controls one fighter directly, while the rest are AI-controlled. Signals (`SIGUSR1`, `SIGUSR2`) can be sent from another terminal to boost or throttle fighters mid-battle.
 
@@ -142,9 +142,9 @@ minimum damage = 1
 
 ---
 
-## No Forbidden Libraries
+## Additional Note
 
-This project uses **only Standard C and raw POSIX system calls**. No threads, no external libraries, no process simulation frameworks.
+This project uses only Standard C and raw POSIX system calls. No threads, no external libraries, no process simulation frameworks used in this project.
 
 | Header         | Purpose                                  |
 | -------------- | ---------------------------------------- |
