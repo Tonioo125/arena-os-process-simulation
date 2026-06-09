@@ -2,7 +2,7 @@
 #define FIGHTER_H
 
 #define MAX_FIGHTERS  4
-#define MAX_LOG       6     // lines in battle log
+#define MAX_LOG       6     
 #define LOG_LEN       64
 
 typedef enum {

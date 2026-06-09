@@ -68,7 +68,7 @@ int next_fighter(void) {
             return current_idx;
         }
     }
-    // fallback: just pick any alive fighter
+    // fallback: pick any alive fighter
     for (int i = 0; i < MAX_FIGHTERS; i++)
         if (fighters[i].state != DEFEATED) return i;
     return -1;

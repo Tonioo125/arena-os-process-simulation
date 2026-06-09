@@ -85,8 +85,7 @@ void ai_take_turn(int idx) {
 }
 
 void player_take_turn(int idx) {
-    // Non-blocking read — player has 2 seconds to act
-    // Set stdin to non-blocking via select()
+    // Non-blocking read where player has 2 seconds to act
     #include <sys/select.h>
     fd_set fds;
     struct timeval tv = {2, 0};   // 2 second window

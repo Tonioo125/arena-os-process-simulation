@@ -28,7 +28,7 @@ static void hp_bar(int hp, int max_hp) {
 }
 
 void display_arena(int active_idx) {
-    printf("\033[2J\033[H");   // clear screen and cursor home
+    printf("\033[2J\033[H");   // clear screen
     printf(BOLD CYAN
         "╔══════════════════════════════════════════════════════════╗\n"
         "║                 JUSTIN  BATTLE  ARENA                    ║\n"

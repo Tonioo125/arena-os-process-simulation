@@ -6,7 +6,7 @@
 #include "fighter.h"
 #include "display.h"
 
-// Set terminal to raw mode so keypresses are instant
+// Set terminal to raw mode
 static struct termios orig_term;
 
 void enable_raw(void) {
