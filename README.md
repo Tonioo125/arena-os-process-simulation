@@ -14,14 +14,14 @@ The player controls one fighter directly, while the rest are AI-controlled. Sign
 
 ## Concepts Demonstrated
 
-| OS Concept | Implementation |
-|---|---|
-| Time-sharing | `SIGALRM` fires every quantum via `setitimer()` |
-| Process table | Array of `Fighter` structs with state tracking |
-| Weighted Round-Robin | `slice_debt` + `priority` controls turn frequency |
-| Signal handling | `sigaction()` for `SIGALRM`, `SIGUSR1`, `SIGUSR2`, `SIGINT` |
-| Process states | `READY`, `RUNNING`, `DEFEATED` |
-| Preemption | Active fighter is switched out every tick automatically |
+| OS Concept           | Implementation                                              |
+| -------------------- | ----------------------------------------------------------- |
+| Time-sharing         | `SIGALRM` fires every quantum via `setitimer()`             |
+| Process table        | Array of `Fighter` structs with state tracking              |
+| Weighted Round-Robin | `slice_debt` + `priority` controls turn frequency           |
+| Signal handling      | `sigaction()` for `SIGALRM`, `SIGUSR1`, `SIGUSR2`, `SIGINT` |
+| Process states       | `READY`, `RUNNING`, `DEFEATED`                              |
+| Preemption           | Active fighter is switched out every tick automatically     |
 
 ---
 
@@ -66,14 +66,14 @@ make
 
 ## Controls
 
-During **your turn** (Hero is ACTIVE), you have **2 seconds** to press:
+During **your turn** (Justin is ACTIVE), you have **2 seconds** to press:
 
-| Key | Action |
-|---|---|
-| `a` | Attack a random enemy |
-| `d` | Defend — gain +3 defense this round |
-| `b` | Boost your own priority (max 5) |
-| *(nothing)* | Hero hesitates, turn is skipped |
+| Key         | Action                              |
+| ----------- | ----------------------------------- |
+| `a`         | Attack a random enemy               |
+| `d`         | Defend — gain +3 defense this round |
+| `b`         | Boost your own priority (max 5)     |
+| _(nothing)_ | Justin hesitates, turn is skipped   |
 
 ---
 
@@ -84,7 +84,7 @@ Open a **second terminal** while the game is running:
 ```bash
 # Get the PID shown at the bottom of the game screen, then:
 
-kill -USR1 <pid>   # Boost Hero's priority (+1, max 5)
+kill -USR1 <pid>   # Boost Justin's priority (+1, max 5)
 kill -USR2 <pid>   # Throttle a random enemy's priority (-1)
 kill -INT  <pid>   # Quit the game cleanly (same as Ctrl+C)
 ```
@@ -93,12 +93,12 @@ kill -INT  <pid>   # Quit the game cleanly (same as Ctrl+C)
 
 ## Fighters
 
-| Fighter | HP | Attack | Defense | Priority | Controlled by |
-|---|---|---|---|---|---|
-| Hero | 120 | 18 | 5 | 3 | Player |
-| Golem | 150 | 12 | 8 | 2 | AI |
-| Rogue | 90 | 22 | 3 | 3 | AI |
-| Warlord | 110 | 16 | 6 | 2 | AI |
+| Fighter | HP  | Attack | Defense | Priority | Controlled by |
+| ------- | --- | ------ | ------- | -------- | ------------- |
+| Justin  | 120 | 18     | 5       | 3        | Player        |
+| Golem   | 150 | 12     | 8       | 2        | AI            |
+| Rogue   | 90  | 22     | 3       | 3        | AI            |
+| Warlord | 110 | 16     | 6       | 2        | AI            |
 
 ---
 
@@ -146,14 +146,14 @@ minimum damage = 1
 
 This project uses **only Standard C and raw POSIX system calls**. No threads, no external libraries, no process simulation frameworks.
 
-| Header | Purpose |
-|---|---|
-| `<signal.h>` | `sigaction()`, signal constants |
-| `<sys/time.h>` | `setitimer()` |
-| `<unistd.h>` | `read()`, `getpid()`, `sleep()` |
-| `<termios.h>` | Raw terminal mode for instant keypresses |
-| `<stdio.h>` | Output |
-| `<stdlib.h>` | `exit()`, `rand()` |
-| `<string.h>` | `strncpy()`, `snprintf()` |
+| Header         | Purpose                                  |
+| -------------- | ---------------------------------------- |
+| `<signal.h>`   | `sigaction()`, signal constants          |
+| `<sys/time.h>` | `setitimer()`                            |
+| `<unistd.h>`   | `read()`, `getpid()`, `sleep()`          |
+| `<termios.h>`  | Raw terminal mode for instant keypresses |
+| `<stdio.h>`    | Output                                   |
+| `<stdlib.h>`   | `exit()`, `rand()`                       |
+| `<string.h>`   | `strncpy()`, `snprintf()`                |
 
 ---
