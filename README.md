@@ -144,7 +144,7 @@ minimum damage = 1
 
 ## Additional Note
 
-This project uses only Standard C and raw POSIX system calls. No threads, no external libraries, no process simulation frameworks used in this project.
+This project uses only Standard C and raw POSIX system calls. No threads, no external libraries, no process simulation frameworks used in this project. Here are the list of headers that are used in this project :
 
 | Header         | Purpose                                  |
 | -------------- | ---------------------------------------- |
